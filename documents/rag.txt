@@ -1,0 +1,7 @@
+RAG, Retrieval-Augmented Generation ifadesinin kısaltmasıdır.
+
+RAG sistemi, kullanıcının sorusunu cevaplamadan önce bir belge koleksiyonunda arama yapar. Kullanıcının sorusuyla en alakalı metin parçalarını bulur ve bu parçaları dil modeline bağlam olarak gönderir.
+
+RAG sisteminin temel adımları belge yükleme, metni küçük parçalara ayırma, embedding oluşturma, verileri saklama, benzerlik araması yapma ve dil modeliyle cevap üretmedir.
+
+RAG kullanmanın amacı, dil modelinin belirli belgelere dayanarak daha doğru ve ilgili cevaplar üretmesini sağlamaktır. Aranan bilgi belgelerde bulunamazsa sistem, yeterli bilgi bulunamadığını söyleyebilir.

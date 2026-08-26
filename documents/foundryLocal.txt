@@ -1,0 +1,2 @@
+Microsoft Foundry Local allows language models to run locally on a user's device.
+It enables offline inference without requiring a cloud connection.

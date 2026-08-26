@@ -1,0 +1,9 @@
+SQLite, hafif ve dosya tabanlı bir ilişkisel veritabanıdır.
+
+SQLite kullanmak için ayrı bir veritabanı sunucusu kurmak gerekmez. Veritabanının tamamı genellikle tek bir dosyada saklanır.
+
+Bu projede SQLite; kaynak metinleri, metinlerden oluşturulan chunk parçalarını, dosya adlarını ve embedding değerlerini saklamak için kullanılacaktır.
+
+Her chunk için kaynak dosyanın adı ve metin içeriği de saklanacaktır. Böylece sistem cevap üretirken kullanılan bilginin hangi belgeden geldiğini gösterebilir.
+
+SQLite küçük ve orta büyüklükteki yerel uygulamalar için uygundur. Bu projenin ilk sürümünde veriler yerel bilgisayarda tutulacaktır.
