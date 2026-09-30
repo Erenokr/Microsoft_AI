@@ -3,14 +3,11 @@ from chunker import chunk_documents
 from embedding_manager import EmbeddingManager
 from database import create_database, save_chunks, load_chunks
 from retriever import retrieve_top_chunks
-from promptBuilder import build_prompt
-from chatBot import Chatbot
 
 
 
 def main():
     embedding_manager = None
-    chatbot = None
 
     # Sistemi hazırla
     create_database()
@@ -28,7 +25,6 @@ def main():
 
     stored_chunks = load_chunks()
 
-    chatbot = Chatbot()
     credits = 100
     print("\n========================================")
     print("        EREN LOCAL RAG ASSISTANT")
@@ -55,25 +51,24 @@ def main():
             # Kullanıcının sorusunu embedding'e çevir
             question_embedding = embedding_manager.generate_embedding(question)
 
-            # En alakalı 3 chunk'ı bul
+            # En alakalı metin parçasını bul.
             results = retrieve_top_chunks(
                 question_embedding,
                 stored_chunks,
-                top_k=3
+                top_k=1,
+                question=question,
             )
 
-            # RAG prompt'unu oluştur
-            prompt = build_prompt(question, results)
-
-            # LLM cevabını üret
-            answer = chatbot.generate_answer(prompt)
+            # TXT metnini değiştirmeden göster; cevap modeli kullanma.
+            answer = (
+                results[0]["chunk"]["content"]
+                if results else "Bu konu hakkında bir bilgim yok"
+            )
 
             print(f"\nAI > {answer}\n")
 
     finally:
-        # Program kapanırken modelleri bellekten çıkar
-        if chatbot is not None:
-            chatbot.unload()
+        # Program kapanırken arama modelini bellekten çıkar.
         if embedding_manager is not None:
             embedding_manager.unload()
 
